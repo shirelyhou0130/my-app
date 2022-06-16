@@ -49,7 +49,7 @@ class Board extends React.Component{
   renderSquare(i){
     return <Square 
               value={this.props.squares[i]} 
-              onClick={()=>this.props.handleClick(i)}
+              onClick={()=>this.props.onClick(i)}
             />;
   }
   render(){
@@ -63,7 +63,7 @@ class Board extends React.Component{
     // }
     return(
       <div>
-        <div className="status">{status}</div>
+        {/* <div className="status">{status}</div> */}
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -91,7 +91,7 @@ class Game extends React.Component{
         squares: Array(9).fill(null),
       }],
       xIsNext: true,
-    }
+    };
   }
   
   handleClick(i){
@@ -121,7 +121,7 @@ class Game extends React.Component{
       'Go to move #' + move :
       'Go to game start';
       return (
-        <li>
+        <li key={move}>
           <button onClick={()=>this.jumpTo(move)}>{desc}</button>
         </li>
       )
@@ -137,7 +137,10 @@ class Game extends React.Component{
     return(
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board 
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
+          />
         </div>
         <div className="game-info">
           <div>{status}</div>
