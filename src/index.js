@@ -2,19 +2,13 @@ import React from "react";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 class Square extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      value: null,
-    }
-  }
   render(){
     return (
       <button 
         className="square" 
-        onClick={()=>this.setState({value: 'X'})}
+        onClick={()=>this.props.onClick()}
       >
-        {this.state.value}
+        {this.props.value}
       </button>
     )
   };
@@ -57,7 +51,7 @@ class Board extends React.Component{
     );
   }
 }
-class Grame extends React.Component{
+class Game extends React.Component{
   render(){
     return(
       <div className="game">
@@ -74,4 +68,4 @@ class Grame extends React.Component{
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Grame />);
+root.render(<Game />);
