@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDom from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 class Square extends React.Component{
   render(){
@@ -55,5 +55,5 @@ class Grame extends React.Component{
   }
 }
 
-const root = React.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Grame />);
